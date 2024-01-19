@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Stroke</title>
+</head>
+<body>
+    <br><br><br>
+    <div class="container contact-form">
+        <form action="{{url_for('predict')}}" method="post">
+            <h1>Prediksi Resiko Penyakit Stroke</h1>
+            <hr>
+            <br>
+           <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" name="gender" class="form-control" placeholder="Jenis Kelamin *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="age" class="form-control" placeholder="Usia *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="hypertension" class="form-control" placeholder="Hipertensi ? *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="heart_disease" class="form-control" placeholder="Penyakit Jantung ? *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="ever_married" class="form-control" placeholder="Menikah ? *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="work_type" class="form-control" placeholder="Tipe Pekerjaan ? *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="residence_type" class="form-control" placeholder="Perumahan ? *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="avg_glucose_level" class="form-control" placeholder="AVG Glukosa ? *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="bmi" class="form-control" placeholder="BMI ? *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="smoking_status" class="form-control" placeholder="Perokok ? *" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" class="btnContact">Prediksi</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>Hasil Prediksi</h3>
+                    <hr>
+                    <div class="form-group">
+                        <!-- <textarea name="txtMsg" class="form-control" value="{{prediction_text}}" style="width: 100%; height: 150px;"></textarea> -->
+                        <!-- {{prediction_text}} -->
+                        {% if prediction == 1 %}
+                            <h4 style="color: red;">Waspada, Anda beresiko terkena Stroke!</h4>
+                            <br>
+                            <img src="{{ url_for('static', filename='stroke.jpg') }}" alt="Stroke Image">
+                        {% elif prediction == 0 %}
+                            <h4 style="color: green;">Selamat, Anda tidak beresiko terkena Stroke!</h4>
+                            <br>
+                            <img src="{{ url_for('static', filename='nostroke.jpg') }}" alt="No Stroke Image">
+                        {% else %}
+                            <h4 style="color:orange">Silahkan isi Kolom terlebih dahulu</h4>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h4>Keterangan</h4><hr>
+                        <img src="{{ url_for('static', filename='ket.jpeg') }}" alt="No Stroke Image">
+                        <img src="{{ url_for('static', filename='ket1.jpeg') }}" alt="No Stroke Image">
+                    <br><br><br><br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
